@@ -1,40 +1,23 @@
-function tocaSom (SeletorAudio ) {
-    
-    const elemento = document.querySelector(seletorAudio);
-    
-    if (elemento && elemento.localName === 'audio') {
-        elemento.play();
-    }
-    else {
-          //alert('Elemento não encontrado');
-          console.log('Elemento ou selector não encontrado!')
-    }
-    
+function tocaSom (idElementoAudio) {
+    document.querySelector(idElementoAudio).play();
 }
 
-const listaDeTeclas = document.querySelectorAll('.tecla');
+const listasDeTeclas = document.querySelectorAll('.teclas');
 
 //para
-for (let contador = 0; contador < listaDeTeclas.length; contador++) {
+for (let contador = 0; contador < listasDeTeclas.length;) {
 
-const tecla = listaDeTeclas[contador];
-const instrumento = tecla.classList[1];
-const idAudio = `#som_$(instrumento)`;//template string
+    const tecla = listasDeTeclas[contador];
+    const instrumento = tecla.classList[1];
+    const idAudio = `#som_$(instrumento)`;//template string
+    
+    tecla.onclick = function () {
+        tocaSom(idAudio);
+    }
 
-tecla.onclick = function () {
-    tocaSom(idAudio);
+    console.log(contador);
+
 }
-
-tecla.onkeydown = function (evento) {
-    if (evento.code === 'Enter' || evento.code === 'Space') {
-
-}
-}
-
-
-
-
-
 
 
 
